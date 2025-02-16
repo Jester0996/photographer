@@ -1,0 +1,20 @@
+/*FONTS*/
+
+/*BASE*/
+
+@import "./base/base.css";
+@import "./base/reset.css";
+
+/**Blocks*/
+@import "./blocks/hero.css";
+@import "./blocks/header.css";
+@import "./blocks/btn.css";
+@import "./blocks/latest-shot.css";
+@import "./blocks/burger.css";
+@import "./blocks/modal.css";
+
+@import "./blocks/other.css";
+@import "./blocks/contacts.css";
+@import "./blocks/reviews.css";
+
+

@@ -1,0 +1,36 @@
+.btn-reset {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn {
+  border-radius: 22px;
+  padding: 16px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-light);
+  background-color: var(--color-red);
+}
+
+
+
+@media (max-width: 768px){
+
+}
+
+@media (max-width: 480px) {
+  .btn{
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .header__btn {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+
+  
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+<title>Photography</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> 
+
+  <link rel="stylesheet" href="./css/main.css">
+<link rel="icon" type="image/x-icon" href="./img/icon/8.png">
+
+
+  <!-- Demo styles -->
+  <style>
+
+    .page__body2{
+      position: relative;
+      background-color: var(--color-light) ;
+      height: 100%; 
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    /* html,
+    body {
+      
+    } */
+
+    /* body {
+     
+    } */
+
+    .swiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: 300px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    /* Модальное окно */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Остается на месте */
+  z-index: 1000; /* На переднем плане */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включает прокрутку, если необходимо */
+  background-color: rgba(0, 0, 0, 0.9); /* Черный фон с прозрачностью */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%; /* Ширина изображения */
+  max-width: 700px; /* Максимальная ширина изображения */
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+  </style>
+
+</head>
+
+<body class="page__body page__body2">
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="./img/photo/1.jpg" />
+      </div>         
+      
+      <div class="swiper-slide">
+          <img src="./img/photo/10.jpg" />
+        </div>  
+      
+      <div class="swiper-slide">
+        <img src="./img/photo/5.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./img/photo/2.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./img/photo/3.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./img/photo/4.jpg" />
+      </div>
+ 
+      <div class="swiper-slide">
+        <img src="./img/photo/6.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./img/photo/7.jpg" />
+      </div>
+      <div class="swiper-slide">
+        <img src="./img/photo/8.jpg" />
+      </div>
+ 
+  
+          <div class="swiper-slide">
+            <img src="./img/photo/11.jpg" />
+          </div>
+            <div class="swiper-slide">
+              <img src="./img/photo/12.jpg" />
+            </div>     
+            <div class="swiper-slide">
+        <img src="./img/photo/9.jpg" />
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+
+  </div>
+
+<div class="but-wrapper">
+  <a href="./index.html" class="btn btn-reset btn--back">
+    Назад на главную
+  </a>
+</div>
+
+  <!-- Модальное окно -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+
+    // Получаем модальное окно
+      var modal = document.getElementById("myModal");
+
+      // Получаем изображение и вставляем его в модальное окно
+      var images = document.querySelectorAll(".swiper-slide img");
+      images.forEach(function (img) {
+        img.onclick = function () {
+          modal.style.display = "block"; // Показываем модальное окно
+          var modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+          modalImg.src = this.src; // Устанавливаем источник изображения
+          captionText.innerHTML = this.alt; // Устанавливаем текст описания
+        }
+      });
+
+      // Получаем элемент <span>, который закрывает модальное окно
+      var span = document.getElementsByClassName("close")[0];
+
+      // Когда пользователь нажимает на <span> (x), закрыть модальное окно
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+
+      // Закрытие модального окна при нажатии вне изображения
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+  </script>
+</body>
+
+</html>
